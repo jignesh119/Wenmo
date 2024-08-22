@@ -1,8 +1,10 @@
 "use client";
 import { RecoilRoot } from "recoil";
 import { Provider } from "react-redux";
+import { useStore } from "@repo/store/useBalance";
 //TODO: continue from here import store from store
 
 export const Providers = ({ children }: { children: React.ReactNode }) => {
-  return <Provider store={}>{children}</Provider>;
+  const store = useStore();
+  return <Provider store={store}>{children}</Provider>;
 };

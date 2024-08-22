@@ -1,6 +1,7 @@
 import { useRecoilValue } from "recoil";
 import { balanceAtom } from "../atoms/balance";
 import { useSelector } from "react-redux";
+import appStore from "../utils/store";
 
 export const useBalance = () => {
   //TODO: fix types later
@@ -9,4 +10,7 @@ export const useBalance = () => {
   );
   // const value = useRecoilValue(balanceAtom);
   return balance;
+};
+export const useStore = () => {
+  return appStore;
 };
