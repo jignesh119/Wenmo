@@ -1,4 +1,5 @@
-import React from "react";
-export default function Home() {
-  return <div className="bg-red text-2xl">hello world</div>;
+"use client";
+
+export default function () {
+  return <div>your balance: 0$ user</div>;
 }
