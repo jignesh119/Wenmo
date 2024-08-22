@@ -1,9 +1,9 @@
 {
-  "name": "@repo/web",
+  "name": "docs",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo",
+    "dev": "next dev --turbo --port 3001",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -11,25 +11,21 @@
   "dependencies": {
     "@repo/ui": "workspace:*",
     "@repo/store": "workspace:*",
-    "autoprefixer": "^10.4.20",
-    "bcryptjs": "^2.4.3",
     "next": "15.0.0-rc.0",
-    "next-auth": "^4.24.7",
-    "postcss": "^8.4.41",
     "react": "19.0.0-rc-f994737d14-20240522",
-    "react-dom": "19.0.0-rc-f994737d14-20240522",
-    "recoil": "^0.7.7",
-    "tailwindcss": "^3.4.10"
+    "react-dom": "19.0.0-rc-f994737d14-20240522"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "autoprefixer": "^10.4.20",
     "eslint": "^8",
     "eslint-config-next": "15.0.0-rc.0",
+    "postcss": "^8.4.41",
+    "tailwindcss": "^3.4.10",
     "typescript": "^5"
   }
 }
