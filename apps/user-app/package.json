@@ -12,9 +12,11 @@
     "@repo/ui": "workspace:*",
     "autoprefixer": "^10.4.20",
     "next": "15.0.0-rc.0",
+    "next-auth": "^4.24.7",
     "postcss": "^8.4.41",
     "react": "19.0.0-rc-f994737d14-20240522",
     "react-dom": "19.0.0-rc-f994737d14-20240522",
+    "recoil": "^0.7.7",
     "tailwindcss": "^3.4.10"
   },
   "devDependencies": {
