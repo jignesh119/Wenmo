@@ -1,5 +1,4 @@
-//FIXME: fix this asap
-import { db } from "@repo/db/client";
+import db from "@repo/db/client";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 
@@ -12,8 +11,9 @@ export const authOptions = {
           label: "Phone number",
           type: "text",
           placeholder: "1231231231",
+          required: true,
         },
-        password: { label: "Password", type: "password" },
+        password: { label: "Password", type: "password", required: true },
       },
       // TODO: User credentials type from next-aut
       async authorize(credentials: any) {
@@ -28,7 +28,7 @@ export const authOptions = {
         if (existingUser) {
           const passwordValidation = await bcrypt.compare(
             credentials.password,
-            existingUser.password,
+            existingUser.password as string,
           );
           if (passwordValidation) {
             return {

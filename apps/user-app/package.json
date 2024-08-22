@@ -9,9 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@repo/ui": "workspace:*",
-    "@repo/store": "workspace:*",
+    "@prisma/client": "^5.18.0",
     "@repo/db": "workspace:*",
+    "@repo/store": "workspace:*",
+    "@repo/ui": "workspace:*",
     "autoprefixer": "^10.4.20",
     "bcryptjs": "^2.4.3",
     "next": "15.0.0-rc.0",
@@ -19,6 +20,7 @@
     "postcss": "^8.4.41",
     "react": "19.0.0-rc-f994737d14-20240522",
     "react-dom": "19.0.0-rc-f994737d14-20240522",
+    "react-redux": "^9.1.2",
     "recoil": "^0.7.7",
     "tailwindcss": "^3.4.10"
   },

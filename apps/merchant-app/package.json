@@ -9,9 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@prisma/client": "^5.18.0",
+    "@repo/db": "workspace:*",
     "@repo/store": "workspace:*",
     "@repo/ui": "workspace:*",
-    "@repo/db": "workspace:*",
     "next": "15.0.0-rc.0",
     "next-auth": "^4.24.7",
     "react": "19.0.0-rc-f994737d14-20240522",
