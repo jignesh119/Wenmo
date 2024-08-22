@@ -11,6 +11,7 @@
   "dependencies": {
     "@repo/ui": "workspace:*",
     "@repo/store": "workspace:*",
+    "@repo/db": "workspace:*",
     "autoprefixer": "^10.4.20",
     "bcryptjs": "^2.4.3",
     "next": "15.0.0-rc.0",
