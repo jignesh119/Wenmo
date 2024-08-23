@@ -3,6 +3,9 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 
 export const authOptions = {
+  secret:
+    process.env.NEXTAUTH_SECRET ||
+    "LfUac+lGor/RXeBJCFAUgYWLeUi8tjSdQ5kRVLmbdrM=",
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -24,6 +27,9 @@ export const authOptions = {
             number: credentials.phone,
           },
         });
+        if (existingUser) {
+          console.log(`existing user found ${JSON.stringify(existingUser)}`);
+        }
 
         if (existingUser) {
           const passwordValidation = await bcrypt.compare(
@@ -61,7 +67,6 @@ export const authOptions = {
       },
     }),
   ],
-  secret: process.env.JWT_SECRET || "secret",
   callbacks: {
     // TODO: can u fix the type here? Using any is bad
     async session({ token, session }: any) {
