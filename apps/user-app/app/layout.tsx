@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { Providers } from "./providers";
+import { AppbarClient } from "./AppbarClient";
 
 const inter = Inter({ subsets: ["latin"] });
 const geistSans = localFont({
@@ -27,7 +28,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Providers>
-        <body className={inter.className}>{children}</body>
+        <body className={inter.className}>
+          <AppbarClient />
+          {children}
+        </body>
       </Providers>
     </html>
   );

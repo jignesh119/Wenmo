@@ -9,6 +9,7 @@ interface AppbarProps {
   onSignout: any;
 }
 
+//appbar comp must be most generic so that mulitple apps with different providers can use it
 export const Appbar = ({ user, onSignin, onSignout }: AppbarProps) => {
   return (
     <div className="flex justify-between border-b px-4">
