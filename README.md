@@ -1,81 +1,154 @@
-# Turborepo starter
+# Wenmo
 
-This is an official starter Turborepo.
+**Wenmo** is a Paytm-like wallet application that allows users to onramp money through a mock bank account. Users can send money, view their transaction history, and manage their balance within the app. Project utilizes a microservices architecture powered by Turborepo and integrates various modern technologies.
 
-## Using this example
+## Table of Contents
 
-Run the following command:
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [Project Structure](#project-structure)
+- [Routes](#routes)
+- [Database](#database)
+- [Security](#security)
+- [Webhooks](#webhooks)
+- [Contributing](#contributing)
+- [License](#license)
 
-```sh
-npx create-turbo@latest
+## Features
+
+- **Authentication**: Secure login using credentials, Google, and GitHub.
+- **Send Money**: Transfer money to other users via phone numbers.
+- **Onramp Money**: Add money to your account from a mock bank server.
+- **Transaction History**: View and manage your transaction history (Work In Progress).
+- **Dashboard**: View account balance, recent transactions, and onramp options.
+- **Database Locking**: Ensures transaction integrity and prevents faulty transactions.
+
+## Tech Stack
+
+- **Frontend/Backend**: Next.js
+- **Auxiliary Backend**: Express.js
+- **Monorepo Management**: Turborepo
+- **Database**: PostgreSQL
+- **ORM**: Prisma
+- **Styling**: Tailwind CSS
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14+)
+- PostgreSQL
+- npm (for package management)
+
+### Installation
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/jignesh119/Wenmo.git
+   cd Wenmo
+   ```
+
+2. **Install dependencies**:
+
+   ```bash
+   npm install
+   ```
+
+3. **Set up the environment variables**:
+   Create specific `.env` files for the `user-app`, `merchant-app`, and `db` package:
+
+   - **`apps/user-app/.env`**:
+
+     ```plaintext
+     NEXTAUTH_URL=http://localhost:3000
+     NEXTAUTH_SECRET=your_secret_key
+     ```
+
+   - **`apps/merchant-app/.env`**:
+
+     ```plaintext
+     GOOGLE_CLIENT_ID=google_client_id
+     GOOGLE_CLIENT_SECRET=google_client_secret
+     NEXTAUTH_SECRET=your secret
+     NEXTAUTH_URL=http://localhost:3001
+     ```
+
+   - **`packages/db/.env`**:
+     ```plaintext
+     DATABASE_URL=postgresql://user:password@localhost:5432/wenmo
+     ```
+
+4. **Run the migrations**:
+
+   ```bash
+   npx prisma migrate dev
+   ```
+
+5. **Start the development server**:
+
+   ```bash
+   npm run dev
+   ```
+
+6. **Access the application**:
+   Open your browser and go to `http://localhost:3000`.
+
+## Project Structure
+
+```plaintext
+wenmo/
+├── apps/
+│   ├── user-app/       # Next.js app for user-facing features
+│   ├── merchant-app/   # Next.js app for merchant-facing features
+│   └── bank-webhook/   # Express app for handling bank webhooks
+├── packages/
+│   ├── db/             # Prisma setup for PostgreSQL
+│   ├── store/          # Shared state management
+│   └── ui/             # Shared UI components
+└── docker/             # Docker configurations
 ```
 
-## What's inside?
+## Routes
 
-This Turborepo includes the following packages/apps:
+### Authentication
 
-### Apps and Packages
+- **`/api/auth/sign`**: Sign-in page (auto-redirect for non-logged-in users).
+- **`/api/auth/callback`**: OAuth callback handler.
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+### Dashboard
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+- **`/dashboard`**: User dashboard displaying account balance and recent transactions.
 
-### Utilities
+### Money Transfer
 
-This Turborepo has some additional tools already setup for you:
+- **`/transfer`**: View balance, select providers, and view onramping transactions.
+- **`/p2p`**: Send money to other users by entering their phone numbers.
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+### Transactions
 
-### Build
+- **`/transactions`**: View all transactions made by the user (Work In Progress).
 
-To build all apps and packages, run the following command:
+## Database
 
-```
-cd my-turborepo
-pnpm build
-```
+- **PostgreSQL**: Used for storing user data, merchant data, transaction history, and authentication information.
+- **Prisma ORM**: Provides type-safe database access and migrations.
 
-### Develop
+### Database Locking
 
-To develop all apps and packages, run the following command:
+Database locking is implemented to prevent double-spending and ensure the consistency of transactions.
 
-```
-cd my-turborepo
-pnpm dev
-```
+## Security
 
-### Remote Caching
+- **JWT Authentication**: Secure session handling with JWT.
+- **OAuth Integration**: Supports Google and GitHub for easy login.
+- **Database Locking**: Prevents race conditions and ensures transaction integrity.
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+## Webhooks
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+- **Bank Webhooks**: The `bank-webhook` app handles user onramping requests and triggers webhooks to update user balances. Webhook endpoints ensure that the user balance is incremented only after a successful transaction.
 
-```
-cd my-turborepo
-npx turbo login
-```
+## Contributing
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+We welcome contributions to enhance the features and improve the stability of Wenmo. Please follow the guidelines in [CONTRIBUTING.md](CONTRIBUTING.md) to get started.
