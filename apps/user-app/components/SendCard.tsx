@@ -16,7 +16,7 @@ export function SendCard() {
         <Card title="Send">
           <div className="min-w-72 pt-2">
             <TextInput
-              placeholder={"Number"}
+              placeholder={"Enter number of person u want send to"}
               label="Number"
               onChange={(value) => {
                 setNumber(value);
