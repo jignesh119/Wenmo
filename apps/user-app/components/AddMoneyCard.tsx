@@ -4,7 +4,7 @@ import { Card } from "@repo/ui/card";
 import { Select } from "@repo/ui/select";
 import { useState } from "react";
 import { TextInput } from "@repo/ui/text-input";
-import { createOnRampTransaction } from "../lib/createOnrampTransactions";
+import { createOnRampTransaction } from "../lib/actions/createOnrampTransactions";
 
 const SUPPORTED_BANKS = [
   {

@@ -2,7 +2,7 @@
 
 import prisma from "@repo/db/client";
 import { getServerSession } from "next-auth";
-import { authOptions } from "./auth";
+import { authOptions } from "../auth";
 
 export async function createOnRampTransaction(
   provider: string,
