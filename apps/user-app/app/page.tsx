@@ -1,5 +1,11 @@
-"use client";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
-export default function Page(): JSX.Element {
-  return <div>User page</div>;
+export default async function Page() {
+  const session = await getServerSession();
+  if (session?.user) {
+    redirect("/dashboard");
+  } else {
+    redirect("/api/auth/signin");
+  }
 }
