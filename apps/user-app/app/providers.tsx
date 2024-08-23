@@ -1,5 +1,4 @@
 "use client";
-import { RecoilRoot } from "recoil";
 import { Provider } from "react-redux";
 import { useStore } from "@repo/store/useBalance";
 import { SessionProvider } from "next-auth/react";

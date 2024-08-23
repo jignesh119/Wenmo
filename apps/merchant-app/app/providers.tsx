@@ -1,5 +1,4 @@
 "use client";
-import { RecoilRoot } from "recoil";
 import { Provider } from "react-redux";
 import { useStore } from "@repo/store/useBalance";
 //TODO: continue from here import store from store
