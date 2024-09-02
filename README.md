@@ -149,6 +149,9 @@ Database locking is implemented to prevent double-spending and ensure the consis
 
 - **Bank Webhooks**: The `bank-webhook` app handles user onramping requests and triggers webhooks to update user balances. Webhook endpoints ensure that the user balance is incremented only after a successful transaction.
 
-## Contributing
+## Demo
 
-We welcome contributions to enhance the features and improve the stability of Wenmo. Please follow the guidelines in [CONTRIBUTING.md](CONTRIBUTING.md) to get started.
+<img src="wenmo1.png">
+<img src="wenmo2.png">
+<img src="wenmo3.png">
+<img src="wenmo4.png">
