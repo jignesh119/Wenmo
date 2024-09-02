@@ -151,7 +151,7 @@ Database locking is implemented to prevent double-spending and ensure the consis
 
 ## Demo
 
-<img src="wenmo1.png">
-<img src="wenmo2.png">
-<img src="wenmo3.png">
-<img src="wenmo4.png">
+<img src="./assets/wenmo1.png">
+<img src="./assets/wenmo2.png">
+<img src="./assets/wenmo3.png">
+<img src="./assets/wenmo4.png">
